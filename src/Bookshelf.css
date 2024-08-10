@@ -1,0 +1,32 @@
+.bookshelf {
+    padding: 20px;
+    text-align: center;
+}
+
+.bookshelf ul {
+    list-style: none;
+    padding: 0;
+}
+
+.bookshelf li {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.bookshelf img {
+    width: 100px;
+    height: auto;
+    display: block;
+    margin: 10px 0;
+}
+
+.bookshelf h3 {
+    margin: 0;
+}
+
+.bookshelf p {
+    margin: 5px 0 0;
+}
