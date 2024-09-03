@@ -1,5 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React from "react";
+import { NavLink } from "react-router-dom"; // Import NavLink from react-router-dom
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -8,13 +9,15 @@ const Navbar = () => {
       <h1>Book Explorer</h1>
       <ul>
         <li>
-          <a href="/">Home</a>
+          <NavLink to="/" exact>
+            Home
+          </NavLink>
         </li>
         <li>
-          <a href="/bookshelf">Bookshelf</a>
+          <NavLink to="/bookshelf">Bookshelf</NavLink>
         </li>
         <li>
-          <a href="/messages">Messages</a>
+          <NavLink to="/messages">Messages</NavLink>
         </li>
       </ul>
     </nav>

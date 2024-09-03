@@ -1,10 +1,9 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom"; // Import HashRouter instead of BrowserRouter
 import Nav from "./Navbar";
 import Home from "./home";
 import Bookshelf from "./Bookshelf";
-
 import SearchBooks from "./Searchbooks";
 import BookDetails from "./BookDetails";
 import "./App.css";
