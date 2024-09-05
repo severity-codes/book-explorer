@@ -1,6 +1,6 @@
-// eslint-disable-next-line no-unused-vars
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-import { HashRouter as Router, Route, Routes } from "react-router-dom"; // Import HashRouter instead of BrowserRouter
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import Nav from "./Navbar";
 import Home from "./home";
 import Bookshelf from "./Bookshelf";
@@ -13,7 +13,13 @@ const App = () => {
   const [selectedBook, setSelectedBook] = useState(null);
 
   const addToBookshelf = (book) => {
-    setBookshelf((prevBookshelf) => [...prevBookshelf, book]);
+    if (!bookshelf.some((b) => b.id === book.id)) {
+      setBookshelf((prevBookshelf) => [...prevBookshelf, book]);
+    }
+  };
+
+  const removeFromBookshelf = (bookId) => {
+    setBookshelf(bookshelf.filter((book) => book.id !== bookId));
   };
 
   const viewDetails = (book) => {
@@ -41,7 +47,11 @@ const App = () => {
                     onAddToBookshelf={addToBookshelf}
                     onViewDetails={viewDetails}
                   />
-                  <Bookshelf books={bookshelf} onViewDetails={viewDetails} />
+                  <Bookshelf
+                    books={bookshelf}
+                    onViewDetails={viewDetails}
+                    onRemoveFromBookshelf={removeFromBookshelf} // Pass the remove function
+                  />
                 </>
               )
             }

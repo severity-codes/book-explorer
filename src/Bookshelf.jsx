@@ -1,27 +1,10 @@
+/* eslint-disable react/prop-types */
 // eslint-disable-next-line no-unused-vars
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./Bookshelf.css";
 
-const Bookshelf = () => {
-  const [books, setBooks] = useState([]);
-  const apiKey = import.meta.env.VITE_GOOGLE_BOOKS_API_KEY;
-
-  useEffect(() => {
-    const fetchBooks = async () => {
-      try {
-        const response = await fetch(
-          `https://www.googleapis.com/books/v1/volumes?q=javascript&country=US&key=${apiKey}`
-        );
-        const data = await response.json();
-        setBooks(data.items || []);
-      } catch (error) {
-        console.error("Error fetching books:", error);
-      }
-    };
-
-    fetchBooks();
-  }, [apiKey]);
-
+// eslint-disable-next-line react/prop-types
+const Bookshelf = ({ books, onViewDetails, onRemoveFromBookshelf }) => {
   return (
     <div className="bookshelf">
       <h2>Your Bookshelf</h2>
@@ -37,8 +20,14 @@ const Bookshelf = () => {
                 <img
                   src={book.volumeInfo.imageLinks.thumbnail}
                   alt={book.volumeInfo.title}
+                  onClick={() => onViewDetails(book)}
                 />
               )}
+              <button onClick={() => onViewDetails(book)}>View Details</button>
+              <button onClick={() => onRemoveFromBookshelf(book.id)}>
+                Remove
+              </button>{" "}
+              {/* Remove Button */}
             </li>
           ))}
         </ul>
